@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zenspa/NumericKeyboard.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -15,82 +16,89 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/background.png"),
-              fit: BoxFit.fill,
-              colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.2), BlendMode.darken)),
-        ),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 3.0,
-            sigmaY: 3.0,
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(FocusNode());
+        },
+        child: Container(
+          padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/background.png"),
+                fit: BoxFit.fill,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.2), BlendMode.darken)),
           ),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(30, 20, 0, 0),
-            child: Stack(
-              children: <Widget>[
-                Image(
-                  image: AssetImage("assets/logo@3x.png"),
-                  width: 92.0,
-                  height: 75.0,
-                ),
-                Center(
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                        child: Text(
-                          "Welcome to Zenspa",
-                          style: TextStyle(
-                              color: Color(0xffffffff),
-                              fontWeight: FontWeight.w700,
-                              fontFamily: "SFProDisplay",
-                              fontStyle: FontStyle.normal,
-                              fontSize: 38.0),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Text(
-                          "Enter your phone number to check in",
-                          style: TextStyle(
-                              color: Color(0xffffffff),
-                              fontWeight: FontWeight.w300,
-                              fontFamily: "SFProDisplay",
-                              fontStyle: FontStyle.normal,
-                              fontSize: 17.0),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                        width: 400,
-                        height: 200,
-                        child: TextField(
-
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide(color: Colors.white),
-                              ),
-                              hintText: "111-222-3333",
-                              hintStyle: _InputTextStyle(),
-                              contentPadding:
-                                  EdgeInsets.fromLTRB(125, 20, 0, 5)),
-                            style: _InputTextStyle(),
-                          keyboardType: TextInputType.phone,
-                          focusNode: FocusNode(
-                            
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 3.0,
+              sigmaY: 3.0,
+            ),
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(30, 20, 0, 0),
+              child: Stack(
+                children: <Widget>[
+                  Image(
+                    image: AssetImage("assets/logo@3x.png"),
+                    width: 92.0,
+                    height: 75.0,
+                  ),
+                  Center(
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                          child: Text(
+                            "Welcome to Zenspa",
+                            style: TextStyle(
+                                color: Color(0xffffffff),
+                                fontWeight: FontWeight.w700,
+                                fontFamily: "SFProDisplay",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 38.0),
                           ),
                         ),
-                      )
-                    ],
-                  ),
-                )
-              ],
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                          child: Text(
+                            "Enter your phone number to check in",
+                            style: TextStyle(
+                                color: Color(0xffffffff),
+                                fontWeight: FontWeight.w300,
+                                fontFamily: "SFProDisplay",
+                                fontStyle: FontStyle.normal,
+                                fontSize: 17.0),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                          width: 400,
+                          height: 100,
+                          child: TextField(
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(color: Colors.white),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderSide: BorderSide(color: Colors.white)
+                                ),
+                                hintText: "111-222-3333",
+                                hintStyle: _InputTextStyle(),
+                                contentPadding:
+                                EdgeInsets.fromLTRB(125, 20, 0, 5)),
+                            style: _InputTextStyle(),
+                            keyboardType: TextInputType.phone,
+                            cursorColor: Colors.white,
+                          ),
+                        ),
+                        NumericKeyboard()
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
