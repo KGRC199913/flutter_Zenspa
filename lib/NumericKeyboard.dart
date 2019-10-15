@@ -20,15 +20,13 @@ class NumericKeyboard extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Opacity(
-                  opacity: 0.4,
-                  child: FloatingActionButton(
-                    child: Text("$index"),
-                    onPressed: () {},
-                    backgroundColor: Colors.grey,
-                    foregroundColor: Colors.white,
-                  ),
-                ));
+              child: FloatingActionButton(
+                child: Text("$index"),
+                onPressed: () {},
+                backgroundColor: Colors.grey.withOpacity(0.5),
+                foregroundColor: Colors.white,
+              ),
+            );
           })),
     );
   }
